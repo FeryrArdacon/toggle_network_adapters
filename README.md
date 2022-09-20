@@ -4,6 +4,8 @@ Powershell script for toggling network adapters on windows on and off
 
 ## Run scripts in powershell
 
+(Source: https://adamtheautomator.com/how-to-sign-powershell-script/)
+
 ```powershell
 # Set powershell policy for running signed scripts
 Set-ExecutionPolicy -ExecutionPolicy AllSigned -Scope CurrentUser
