@@ -9,7 +9,7 @@ Powershell script for toggling network adapters on windows on and off
 Set-ExecutionPolicy -ExecutionPolicy AllSigned -Scope CurrentUser
 
 # Generate a self-signed Authenticode certificate in the local computer's personal certificate store.
-$authenticode = New-SelfSignedCertificate -Subject "ATA Authenticode" -CertStoreLocation Cert:\LocalMachine\My -Type CodeSigningCert
+$authenticode = New-SelfSignedCertificate -Subject "FeryrArdacon Authenticode" -CertStoreLocation Cert:\LocalMachine\My -Type CodeSigningCert
 
 # Add the self-signed Authenticode certificate to the computer's root certificate store.
 ## Create an object to represent the LocalMachine\Root certificate store.
@@ -32,14 +32,14 @@ $publisherStore.Add($authenticode)
 $publisherStore.Close()
 
 # Confirm if the self-signed Authenticode certificate exists in the computer's Personal certificate store
-Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=ATA Authenticode"}
+Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=FeryrArdacon Authenticode"}
 # Confirm if the self-signed Authenticode certificate exists in the computer's Root certificate store
-Get-ChildItem Cert:\LocalMachine\Root | Where-Object {$_.Subject -eq "CN=ATA Authenticode"}
+Get-ChildItem Cert:\LocalMachine\Root | Where-Object {$_.Subject -eq "CN=FeryrArdacon Authenticode"}
 # Confirm if the self-signed Authenticode certificate exists in the computer's Trusted Publishers certificate store
-Get-ChildItem Cert:\LocalMachine\TrustedPublisher | Where-Object {$_.Subject -eq "CN=ATA Authenticode"}
+Get-ChildItem Cert:\LocalMachine\TrustedPublisher | Where-Object {$_.Subject -eq "CN=FeryrArdacon Authenticode"}
 
-# Get the code-signing certificate from the local computer's certificate store with the name *ATA Authenticode* and store it to the $codeCertificate variable.
-$codeCertificate = Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=ATA Authenticode"}
+# Get the code-signing certificate from the local computer's certificate store with the name *FeryrArdacon Authenticode* and store it to the $codeCertificate variable.
+$codeCertificate = Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=FeryrArdacon Authenticode"}
 
 # Sign the PowerShell script
 # PARAMETERS:
