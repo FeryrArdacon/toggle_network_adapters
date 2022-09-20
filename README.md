@@ -4,7 +4,7 @@ Powershell script for toggling network adapters on windows on and off
 
 ## Run scripts in powershell
 
-```bash
+```powershell
 # Set powershell policy for running signed scripts
 Set-ExecutionPolicy -ExecutionPolicy AllSigned -Scope CurrentUser
 
@@ -19,7 +19,7 @@ $rootStore.Open("ReadWrite")
 ## Add the certificate stored in the $authenticode variable.
 $rootStore.Add($authenticode)
 ## Close the root certificate store.
- $rootStore.Close()
+$rootStore.Close()
 
 # Add the self-signed Authenticode certificate to the computer's trusted publishers certificate store.
 ## Create an object to represent the LocalMachine\TrustedPublisher certificate store.
@@ -49,6 +49,6 @@ $codeCertificate = Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subjec
 $scriptRun = "$(Get-Location)\run.ps1"
 $scriptToogle = "$(Get-Location)\toggle_network_adapters.ps1"
 
-Set-AuthenticodeSignature -FilePath $scriptRun -Certificate $codeCertificate -TimeStampServer *<http://timestamp.digicert.com>*
-Set-AuthenticodeSignature -FilePath $scriptToogle -Certificate $codeCertificate -TimeStampServer *<http://timestamp.digicert.com>*
+Set-AuthenticodeSignature -FilePath $scriptRun -Certificate $codeCertificate -TimeStampServer http://timestamp.digicert.com
+Set-AuthenticodeSignature -FilePath $scriptToogle -Certificate $codeCertificate -TimeStampServer http://timestamp.digicert.com
 ```
